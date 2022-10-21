@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield; /* Firefox */
+    }   
+
+    .unexpected_underline {
+        background: 
+           linear-gradient(currentColor 0 0) left  var(--p, 50%) bottom 0 /var(--d, 10%) 3px no-repeat,
+           linear-gradient(currentColor 0 0) right var(--p, 50%) bottom 0 /var(--d, 10%) 3px no-repeat;
+        transition: 0.3s, background-position 0.3s 0.3s;
+      }
+      
+    .unexpected_underline:hover {
+        --d: 100%;
+        --p: 100%;
+        transition: 0.3s, background-size 0.3s 0.3s;
+    }
+
+    .create_deck_bg {
+        --_g1: conic-gradient(from 90deg at 50% 75%,#000  90deg,#fff 0) no-repeat;
+        --_g2: conic-gradient(from 90deg at 50% 75%,#0000 90deg,#000 0) no-repeat;
+        background: 
+          var(--_g1) 0    calc(134% - var(--_p,0%)),
+          var(--_g2) 0    calc(134% - var(--_p,0%)),
+          var(--_g1) 100% calc(200% - var(--_p,0%)),
+          var(--_g2) 100% calc(200% - var(--_p,0%)),
+          #000;
+        background-size: 50.2% 400%;
+        -webkit-background-clip: text, padding-box;
+                background-clip: text, padding-box;
+        transition: 0.8s
+      }
+      .create_deck_bg:hover {
+        --_p: 134%;
+      }
+    
+}
