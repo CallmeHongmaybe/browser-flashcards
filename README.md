@@ -1,3 +1,17 @@
+# About 
+
+A minimalist flashcard app that lives in your browser.
+
+No signup required, no ads, no cookies, no paywall, just flashcards. For your own benefit. 
+
+# Future features 
+- Updating About page
+- Organizing input sentences by parts of speech ( in other words, no comma needed ) 
+- Chrome extension allowing users to immediately create decks from text highlights in websites 
+- Kofi donation page (maybe ?) 
+
+# Tech spec 
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
