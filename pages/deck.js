@@ -16,7 +16,7 @@ export default function DeckEditor({ id }) {
                 data, id, title
             })
         })()
-    }, [])
+    })
 
     return deckData && <Editor title={deckData.title} listOfCards={JSON.stringify(deckData.data)} id={deckData.id} isNew={false} />
 }

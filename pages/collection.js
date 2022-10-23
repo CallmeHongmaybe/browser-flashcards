@@ -68,7 +68,7 @@ const Card = ({ id, title }) => {
 };
 
 
-export default function collection() {
+export default function Collection() {
 
     const [collections, setCollections] = useState([])
 
@@ -97,7 +97,7 @@ export default function collection() {
                     phone:grid phone:grid-cols-1 phone:gap-8 
                     '>
                         {
-                            collections.map((deck) => <Card {...deck} />)
+                            collections.map((deck) => <Card {...deck} key={deck.title}/>)
                         }
                     </div>
                 </CollectionContext.Provider>

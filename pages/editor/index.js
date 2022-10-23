@@ -1,75 +1,41 @@
 import Editor from "../../components/Editor";
 
-const listOfCards = [
-    {
-        id: 1,
-        word: "drama",
-        translation: "chính kịch",
-        starred: false
-    },
-    {
-        id: 2,
-        word: "wasaho",
-        translation: "mẹ",
-        starred: false
-    },
-    {
-        id: 3,
-        word: "bitch",
-        translation: "chó cái",
-        starred: false
-    },
-    {
-        id: 4,
-        word: "slimy",
-        translation: "nhếch nhác",
-        starred: false
-    },
-    {
-        id: 5,
-        word: "fistful",
-        translation: "một nắm tay",
-        starred: false
-    },
-    {
-        id: 6,
-        word: "resentful",
-        translation: "hờn dỗi",
-        starred: false
-    },
-    {
-        id: 7,
-        word: "growl",
-        translation: "gầm gừ",
-        starred: false
-    },
-    {
-        id: 8,
-        word: "rice hub",
-        translation: "cơm hộp",
-        starred: false
-    },
-    {
-        id: 9,
-        word: "resentful",
-        translation: "hờn dỗi",
-        starred: false
-    },
-    {
-        id: 10,
-        word: "Malaysia",
-        translation: "Mã Lai",
-        starred: false
-    },
-    {
-        id: 11,
-        word: "pain in the ass",
-        translation: "đau đít",
-        starred: false
-    }
-]
-
-export default function IndexEditor() { 
-    return <Editor listOfCards={JSON.stringify(listOfCards)} title="Wasaho deck."/>
+export default function NewEditor({cardDecks}) { 
+    return <Editor listOfCards={cardDecks} title="New deck." isNew={true}/>
 }
+
+export async function getServerSideProps(ctx) {
+    // const { Translate } = require('@google-cloud/translate').v2;
+
+    var { words } = ctx.query;
+
+    // const translate = new Translate({
+    //     keyFilename: 'lingo-flash-cred.json'
+    // });
+
+    // let [translations] = await translate.translate(words, 'zh');
+    // translations = Array.isArray(translations) ? translations : [translations];
+    // translations = JSON.parse(translations)
+    let cardDecks = JSON.parse(words).map(async (word, i) => {
+        // shout out to Random Word API -  https://random-word-api.herokuapp.com 
+        const res = await fetch("https://random-word-api.herokuapp.com/word?lang=zh")
+        const data = await res.json()
+
+        return {
+            id: i + 1,
+            word,
+            translation: data[0],
+            starred: false
+        }
+    });
+
+    return {
+        props: {
+            cardDecks: JSON.stringify(await Promise.all(cardDecks))
+        }
+    }
+}
+
+// formula: Math.round((flashpane.scrollTop / flashpane.clientHeight) + 1 ) 
+
 

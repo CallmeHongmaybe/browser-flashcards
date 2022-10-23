@@ -1,7 +1,7 @@
 import DefaultErrorPage from "next/error";
 import { useEffect, useRef, useState, useContext, createContext, useMemo, memo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faStar, faDownload, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faStar, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 // Prevent fontawesome from adding its CSS since we did it manually above:
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -56,10 +56,10 @@ const Deck = () => {
         if (el) flashPane = el
     }} onScroll={trackHeight} className="overflow-scroll flex flex-col
     desktop:w-3/5 laptop:w-3/5 tablet:w-[100%] phone:w-[100%]
-    desktop:h-[100%] laptop:h-[100%] tablet:h-3/5 phone:h-3/5">
+    desktop:h-[100%] laptop:h-[100%] tablet:h-3/5 phone:h-3/5 scrollbar-hide">
         <ul id="cardlist" className="h-full">
-            {cardDecks.current.map((content) => (
-                <Card {...content} />
+            {cardDecks.current.map((content, i) => (
+                <Card {...content} key={i + content.id}/>
             ))}
         </ul>
     </div >
@@ -198,7 +198,7 @@ const SearchBar = () => {
                 !!suggestion.length
                 && <ul className='px-4 py-2 mx-auto text-left w-full mt-12 absolute bg-white'>
                     {
-                        suggestion.map((wordObj) =>
+                        suggestion.map((wordObj, i) =>
                             <li
                                 className="font-bold cursor-pointer list-none text-md"
                                 onClick={() => {
@@ -209,6 +209,7 @@ const SearchBar = () => {
                                     setSuggestion([])
                                     document.getElementById("cardlist").childNodes[wordObj.id - 1].scrollIntoView()
                                 }}
+                                key={i + wordObj.id}
                             >
                                 <span>{wordObj.word} - {wordObj.translation}</span>
                             </li>
@@ -239,18 +240,19 @@ export default function Editor({title, listOfCards, id, isNew = true}) {
     return cardDecks.current.length > 15    
         ? <DefaultErrorPage statusCode={403} title="There should be less than 15 words" />
         : <div className="flex h-screen 
-        desktop:flex-row laptop:flex-row tablet:flex-col-reverse phone:flex-col-reverse overflow-scroll">
+        desktop:flex-row laptop:flex-row tablet:flex-col-reverse phone:flex-col-reverse">
             <InfoContext.Provider value={memoizedValues}>
                 <div style={{ backgroundColor: 'rgb(247,241,233)' }}
                     className="sticky flex flex-col items-center
                     desktop:w-2/5 laptop:w-2/5 tablet:w-full phone:w-full
-                    desktop:h-full laptop:h-full tablet:h-1/2 phone:h-1/2 phone:overflow-scroll">
+                    desktop:h-full laptop:h-full tablet:h-1/2 phone:h-1/2 
+                    desktop:overscroll-none laptop:overscroll-none tablet:overflow-scroll phone:overflow-scroll scrollbar-hide">
                     <SearchBar />
                     <span className="m-auto inline-flex 
-                    desktop:text-2xl laptop:text-2xl tablet:text-xl phone:text-lg 
-                    desktop:my-0 laptop:my-0 tablet:my-3 phone:my-3
+                    desktop:text-4xl laptop:text-4xl tablet:text-2xl phone:text-xl 
+                    desktop:my-auto laptop:my-auto tablet:my-3 phone:my-3
                     "><EditField title={deckTitle.current} /></span>
-                    <div className="w-full container my-auto flex flex-col">
+                    <div className="w-full container flex flex-col">
                         <div className="desktop:w-[90%] laptop:w-[90%] tablet:w-full phone:w-full desktop:text-2xl laptop:text-2xl tablet:text-xl phone:text-lg inline-flex justify-between rounded bg-white px-6 py-4 mb-3 mx-auto" id="word">
                             <p>Word</p>
                             <EditField word={wordPairs.word} />
@@ -260,7 +262,7 @@ export default function Editor({title, listOfCards, id, isNew = true}) {
                             <EditField word={wordPairs.translation} />
                         </div>
                     </div>
-                    <div className="flex flex-row w-[90%] desktop:my-0 laptop:my-0 tablet:my-3 phone:my-3 desktop:text-2xl laptop:text-2xl tablet:text-xl phone:text-lg justify-around mx-auto">
+                    <div className="flex flex-row w-[90%] desktop:my-auto laptop:my-auto tablet:my-3 phone:my-3 desktop:text-3xl laptop:text-3xl tablet:text-xl phone:text-lg justify-around mx-auto">
                         <button onClick={() => {
                             let numCard = wordPairs.id
                             let currentCardDeck = cardDecks.current
@@ -305,13 +307,13 @@ export default function Editor({title, listOfCards, id, isNew = true}) {
                             />
                         </button>
                     </div>
-                    <span className="m-auto inline-flex"><EditField number={wordPairs.id} /> out of  {cardDecks.current.length}</span>
+                    <span className="my-auto inline-flex desktop:text-2xl laptop:text-2xl tablet:text-xl phone:text-lg"><EditField number={wordPairs.id} /> out of  {cardDecks.current.length}</span>
                     <button 
                     onClick={async () => {
                         isNew ? await addDeck(cardDecks.current, deckTitle.current) : await updateDeck(id, deckTitle.current, cardDecks.current) 
                         router.push('/collection')
                     }} 
-                    className="text-xl text-center m-auto w-[90%] desktop:text-2xl laptop:text-2xl tablet:text-xl phone:text-lg desktop:p-2 laptop:p-2 tablet:p-1 phone:p-0.5 border rounded border-black hover:bg-black hover:text-white create_deck_bg desktop:my-0 laptop:my-0 tablet:my-3 phone:my-3">
+                    className="text-center my-auto w-[90%] desktop:text-2xl laptop:text-2xl tablet:text-xl phone:text-lg desktop:p-2 laptop:p-2 tablet:p-1 phone:p-0.5 border rounded border-black hover:bg-black hover:text-white create_deck_bg mb-3">
                       {isNew ? "Create deck" : "Update deck"}  
                     </button>
                 </div>

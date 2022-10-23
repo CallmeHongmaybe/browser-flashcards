@@ -14,9 +14,8 @@ export default function InputFunction() {
 
     const translateWords = (e) => {
         // this block of code goes to the new page
-        
         router.push({
-            pathname: '/editor/new',
+            pathname: '/editor',
             // hash the list of words here first 
             query: { words: JSON.stringify(listOfWords) },
         })
@@ -26,7 +25,7 @@ export default function InputFunction() {
         <div className='flex self-center justify-center laptop:space-x-6 items-center tablet:space-x-0 phone:space-x-0  mt-6 phone:mt-10 laptop:w-2/3 tablet:w-full phone:w-full laptop:flex-row tablet:flex-col phone:flex-col relative'>
             <div className='flex relative laptop:w-2/3 tablet:w-full phone:w-full'>
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                    <Image src={GoogleDocLogo} width={30} height={30} />
+                    <Image src={GoogleDocLogo} width={30} height={30} alt="Google Doc logo" />
                 </div>
                 <textarea className="pl-12 p-4 border shadow-sm flex-grow"
                     ref={el => {
