@@ -307,13 +307,13 @@ export default function Editor({title, listOfCards, id, isNew = true}) {
                             />
                         </button>
                     </div>
-                    <span className="my-auto inline-flex desktop:text-2xl laptop:text-2xl tablet:text-xl phone:text-lg"><EditField number={wordPairs.id} /> out of  {cardDecks.current.length}</span>
+                    <span className="desktop:my-0 laptop:my-0 tablet:my-3 phone:my-3 desktop:text-2xl laptop:text-2xl tablet:text-xl phone:text-lg"><EditField number={wordPairs.id} /> out of  {cardDecks.current.length}</span>
                     <button 
                     onClick={async () => {
                         isNew ? await addDeck(cardDecks.current, deckTitle.current) : await updateDeck(id, deckTitle.current, cardDecks.current) 
                         router.push('/collection')
                     }} 
-                    className="text-center my-auto w-[90%] desktop:text-2xl laptop:text-2xl tablet:text-xl phone:text-lg desktop:p-2 laptop:p-2 tablet:p-1 phone:p-0.5 border rounded border-black hover:bg-black hover:text-white create_deck_bg mb-3">
+                    className="my-auto text-center w-[90%] desktop:text-2xl laptop:text-2xl tablet:text-xl phone:text-lg desktop:p-2 laptop:p-2 tablet:p-1 phone:p-0.5 border rounded border-black hover:bg-black hover:text-white create_deck_bg">
                       {isNew ? "Create deck" : "Update deck"}  
                     </button>
                 </div>
