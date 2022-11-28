@@ -10,14 +10,14 @@ export default function InputFunction() {
     let router = useRouter()
 
     let [disable, setDisable] = useState(false)
-    let [listOfWords, setListOfWords] = useState([])
+    let [listOfWords, setListOfWords] = useState()
 
     const translateWords = (e) => {
         // this block of code goes to the new page
         router.push({
-            pathname: '/editor',
+            pathname: '/choose_deck',
             // hash the list of words here first 
-            query: { words: JSON.stringify(listOfWords) },
+            query: { paragraph: listOfWords },
         })
     }
 
@@ -32,11 +32,11 @@ export default function InputFunction() {
                         if (el) textField = el;
                     }}
                     onChange={e => {
-                        let changingWordList = e.target.value.split(/[,\n]+[\W]*/g)
-                        setListOfWords(changingWordList)
+                        // let changingWordList = e.target.value.split(/[,\n]+[\W]*/g)
+                        setListOfWords(e.target.value)
 
-                        if (changingWordList.length > 20) setDisable(true)
-                        else setDisable(false)
+                        // if (changingWordList.length > 20) setDisable(true)
+                        // else setDisable(false)
                     }}
                 />
                 {/* {disable ? <p>Please only enter 5 words at most</p> : null} */}

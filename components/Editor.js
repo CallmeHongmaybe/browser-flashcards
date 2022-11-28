@@ -1,5 +1,5 @@
 import DefaultErrorPage from "next/error";
-import { useEffect, useRef, useState, useContext, createContext, useMemo, memo } from "react";
+import { useEffect, useRef, useState, useContext, createContext, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faStar, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import '@fortawesome/fontawesome-svg-core/styles.css';
