@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { convertDataToCSVFile } from '../services/download_csv'
 
 /*
-Tạo deck collection rồi map giá trị cho từng thằng 
+Tạo deck collection rồi map giá trị cho từng thằng
 As soon as you click on one of them, its id or title will be queried in getserversideprops
 */
 
@@ -20,11 +20,11 @@ const Card = ({ id, title }) => {
     const router = useRouter()
 
     return (
-        <div className="list-none">
+        <div className="list-none" key={title}>
             <span
                 onMouseOver={() => setHover(true)}
                 onMouseOut={() => setHover(false)}
-                className=" bg-gray-200 transition-colors duration-300 relative hover:bg-gray-300 flex w-full h-full items-center justify-center text-3xl shadow-xl text-black"
+                className="bg-gray-200 transition-colors duration-300 relative hover:bg-gray-300 flex w-full h-full items-center justify-center text-3xl shadow-xl text-black"
             >
                 <span className={`${hover && 'blur-sm'} absolute`}>{id}, {title}</span>
                 {hover && <span className="absolute w-full inline-flex justify-evenly">
@@ -36,7 +36,7 @@ const Card = ({ id, title }) => {
                             setCollections(
                                 collections
                                 .splice(collections
-                                    .findIndex(item => item.id === id), 
+                                    .findIndex(item => item.id === id),
                                     1)
                             )
                         }}
@@ -47,7 +47,7 @@ const Card = ({ id, title }) => {
                             pathname: '/deck',
                             query: { id },
                         })}
-                        className="desktop:text-3xl laptop:text-2xl tablet:text-xl phone:text-xl cursor-pointer" 
+                        className="desktop:text-3xl laptop:text-2xl tablet:text-xl phone:text-xl cursor-pointer"
                     />
                     <FontAwesomeIcon
                         icon={faDownload}
@@ -59,8 +59,8 @@ const Card = ({ id, title }) => {
                             anchor.click();
                             URL.revokeObjectURL(url);
                         }}
-                        className="desktop:text-3xl laptop:text-2xl tablet:text-xl phone:text-xl cursor-pointer" 
-                    /> 
+                        className="desktop:text-3xl laptop:text-2xl tablet:text-xl phone:text-xl cursor-pointer"
+                    />
                 </span>}
             </span>
         </div>
@@ -75,7 +75,7 @@ export default function Collection() {
     useEffect(() => {
         (async () => {
             const decks = await getAllDecks()
-            setCollections(decks) 
+            setCollections(decks)
         })()
     })
 
@@ -91,10 +91,10 @@ export default function Collection() {
                 <CollectionContext.Provider value={memoizedValues}>
                     <div className='
                     min-h-screen
-                    desktop:grid desktop:grid-cols-3 desktop:gap-12 
+                    desktop:grid desktop:grid-cols-3 desktop:gap-12
                     laptop:grid laptop:grid-cols-3 laptop:gap-10
                     tablet:grid tablet:grid-cols-2 tablet:gap-10
-                    phone:grid phone:grid-cols-1 phone:gap-8 
+                    phone:grid phone:grid-cols-1 phone:gap-8
                     '>
                         {
                             collections.map((deck) => <Card {...deck} key={deck.title}/>)
