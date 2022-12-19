@@ -26,7 +26,7 @@ export default function Home() {
         <div>
           <h1 className="text-slate-900 font-extrabold phone:text-4xl tablet:text-5xl laptop:text-6xl tracking-tight text-center dark:text-white">The flashcard generator for language learners.</h1>
           <p className='mt-6 text-lg text-slate-600 text-center max-w-3xl mx-auto dark:text-slate-400'>
-            Simply paste your comma-separated list of words here ! 
+            Paste a word list or a paragraph here ! 
           </p>
         </div>
         <InputFunction/>

@@ -237,8 +237,8 @@ export default function Editor({title, listOfCards, id, isNew = true}) {
         return { wordPairs, cardDecks, deckTitle, setWordpairs }
     }, [wordPairs, setWordpairs])
 
-    return cardDecks.current.length > 15    
-        ? <DefaultErrorPage statusCode={403} title="There should be less than 15 words" />
+    return cardDecks.current.length > 30    
+        ? <DefaultErrorPage statusCode={403} title="There should be less than 30 words" />
         : <div className="flex h-screen 
         desktop:flex-row laptop:flex-row tablet:flex-col-reverse phone:flex-col-reverse">
             <InfoContext.Provider value={memoizedValues}>
