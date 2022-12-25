@@ -1,11 +1,12 @@
 export default function Tooltip({ children, title, onClick = undefined }) {
     return (
-        <div className="relative z-10 group" onClick={onClick}>
+        <div className="relative z-5 group" onClick={onClick}>
             {children}
-            <div className="
-            absolute -left-14 hidden
+            <div 
+            className="
+            absolute hidden
             group-hover:block       
-            text-sm w-max px-4 py-2 leading-none text-white rounded-md whitespace-no-wrap bg-black shadow-lg">
+            text-sm w-max px-4 py-2 z-10 left-1/2 -translate-x-1/2 leading-none text-white rounded-md bg-black shadow-lg">
             {title}
             </div>
         </div>
