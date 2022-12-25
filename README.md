@@ -6,15 +6,12 @@ No signup required, no ads, no cookies, no paywall, just flashcards. For your ow
 
 # Future features 
 - Updating About page
-- Organizing input sentences by parts of speech ( in other words, no comma needed ) 
 - Chrome extension allowing users to immediately create decks from text highlights in websites 
 - Kofi donation page (maybe ?) 
 
 # Tech spec 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
 
 First, run the development server:
 
@@ -41,8 +38,3 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
