@@ -6,9 +6,6 @@ import natural from 'natural'
 import tag_names from '../lib/tag_names'
 import { useRouter } from 'next/router'
 import Tooltip from '../components/Tooltip'
-/*
-Tạo deck collection rồi map giá trị cho từng thằng
-*/
 
 const SelectListContext = createContext()
 

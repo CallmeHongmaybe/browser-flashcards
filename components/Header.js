@@ -12,7 +12,7 @@ function Header() {
                     <Link href="/">
                         <a className={`p-2 rounded text-black hover:bg-gray-200 hover:text-green-700 transition-colors duration-300`}>Home</a>
                     </Link>
-                    <Link href="/about">
+                    <Link href="https://github.com/CallmeHongmaybe/lingohelper">
                         <a className={`p-2 rounded text-black hover:bg-gray-200 hover:text-green-700 transition-colors duration-300`}>About</a>
                     </Link>
                     <Link href="/collection">

@@ -107,7 +107,7 @@ const EditField = ({ word, title, number }) => {
     }
 
     return (
-        <span className="relative flex justify-end">
+        <span className="relative">
             {/* {mouse.hover && } */}
             {number !== undefined
                 ? <input
