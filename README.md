@@ -7,6 +7,8 @@ No signup required, no ads, no cookies, no paywall, just flashcards. For your ow
 # Future features 
 - Updating About page
 - Chrome extension allowing users to immediately create decks from text highlights in websites 
+- Flipping animation for cards 
+- Study mode for each deck  
 - Kofi donation page (maybe ?) 
 
 # Tech spec 
