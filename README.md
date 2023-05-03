@@ -1,40 +1,64 @@
 # About 
 
-A minimalist flashcard app that lives in your browser.
+Lingohelper is an automatic flashcard generator for language learners, designed to live right in your browser. You can input a short paragraph or a comma-separated list of words, and the app will take you to a flashcard editor where you can make edits before saving to your browser storage. The project was born out of a desire to provide an efficient vocabulary learning tool that doesn't require a subscription or registration.
 
 No signup required, no ads, no cookies, no paywall, just flashcards. For your own benefit. 
 
-# Future features 
-- Updating About page
-- Chrome extension allowing users to immediately create decks from text highlights in websites 
-- Flipping animation for cards 
-- Study mode for each deck  
-- Kofi donation page (maybe ?) 
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0z65dmer69lfo6r5o1cz.jpg)
 
-# Tech spec 
+## Features 
+- Automatic flashcard generation from user-input text
+- Intuitive flashcard editor for customizing decks
+- Browser-based, offline usage
+- Privacy-focused, no registration required
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Usage
 
-First, run the development server:
+1. **Create your flashcard deck:** Enter a list of new words or a paragraph.
+2. **Edit your deck:** Press the 'Create Deck' button to be taken to the editor where you can customize your new deck.
+3. **Save changes:** If you make any changes, press `Enter` to ensure they are saved.
 
+For a visual guide, check out the following video tutorials:
+- [Video Tutorial 1](https://youtu.be/LlbAFDLhAZ4)
+- [Video Tutorial 2](https://youtu.be/1Q_Q1tLpmtc)
+
+Please note that the project is still in its MVP stage and the translations shown in the videos may not be correct.
+
+## Tech Stack 
+- JAM Stack
+- TailwindCSS
+- Dexie.js (A React wrapper for IndexedDB)
+
+## Installation instructions  
+
+This is a [Next.js](https://nextjs.org/) v12 project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Package managers for this project would ideally be `npm` or `pnpm`.
+
+First, run: 
 ```bash
-npm run dev
-# or
-yarn dev
+npm install  
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then for running dev or build environments you can do:
+```bash
+npm run dev 
+# or 
+pnpm run dev   
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Or you can run its build instead: 
+```bash
+npm run build 
+# then 
+npm run start   
+```
+## Contributing
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Your contributions are always welcome! Here are a couple of areas where help would be appreciated:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Finding a better solution for the translation API
+- Implementing a flipping animation when editing or starring a card
+- Enabling download of Anki flashcards from saved decks
 
-To learn more about Next.js, take a look at the following resources:
+If you have any suggestions or questions, feel free to open an issue or make a pull request.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
